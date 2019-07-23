@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Borrow Details</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Mã sách</th>
+      <th>Tên sách</th>
+      <th>Tên Sinh viên</th>
+      <th>Thời gian mượn</th>
+      <th>Thời gian trả</th>
+      <th>Cho phép mượn</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @borrow_details.each do |borrow_detail| %>
+      <tr>
+        <% @indentifies.each do |indentify| %>
+            <% if indentify.id == borrow_detail.indentify_id %>
+              <% @users.each do |user| %>
+                <% if user.id == borrow_detail.user_id %>
+                  <td> <%= indentify.indentify_code %></td>
+                  <td><%= indentify.tieude %></td>
+                  <td><%= user.hoten %></td>
+                  <td><%= borrow_detail.thoigianmuon %></td>
+                  <td><%= borrow_detail.thoigiantra %></td>
+                    <% if borrow_detail.mode == 0%>
+                      <td><%= button_to "Đồng ý", action: "new" %></td>
+                    <% else %>
+                      <td><%= button_to "Không đồng ý", action: "new" %></td>
+                  <% end %>
+                <% end %>
+              <% end %>
+            <% end %>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Borrow Detail', new_borrow_detail_path %>

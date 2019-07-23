@@ -1,3 +1,41 @@
+<h3 class="w3-center">Thông tin sinh viên</h3>
+<table class="tablest">
+  <thead>
+    <tr>
+      <th >Tên</th>
+      <th >Địa chỉ mail</th>
+      <th >Số điện thoại</th>
+      <th >Mã số </th>
+      <th >Lớp</th>
+      <th >Địa chỉ </th>
+      <th >Năm sinh</th>
+      <% unless current_user.admin %>
+      <th colspan="3"></th>
+      <% end %>
+    </tr>
+  </thead>
+
+  <tbody class="tablest">
+      <tr>
+        <td ><%= @user.hoten %></td>
+        <td ><%= @user.email %></td>
+        <td ><%= @user.sdt %></td>
+        <td ><%= @user.masv %></td>
+        <td ><%= @user.lop %></td>
+        <td ><%= @user.thuongtru %></td>
+        <td ><%= @user.namsinh_at %></td>
+        
+      </tr>
+  </tbody>
+</table>
+<a>
+ <%= Date.current  %> <br>
+</a>
+
+
+
+
+
 <p id="notice"><%= notice %></p>
 
 <p>

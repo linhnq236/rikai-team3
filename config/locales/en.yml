@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+
+en:
+  activerecord:
+    attributes:
+      user:
+        email: "Địa chỉ email" 
+        masv: "Mã số sinh viên"
+        password: "Mật khẩu"
+        

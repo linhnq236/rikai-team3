@@ -1,0 +1,40 @@
+<div class ="container">
+<p id="notice"><%= notice %></p>
+
+<h3 class="w3-center">Thống kê các sách</h3>
+
+<table class="tablest">
+  <thead>
+    <tr>
+      <th>STT</th>
+      <th>Mã sách</th>
+      <th>Tên sách</th>
+      <th>Tác giả</th>
+      <th>Năm xuất bản</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% i = 0 %>
+    <% @indentifies.each do |indentify| %>
+      <tr>
+      <td><%= i+=1 %> </td>
+        <td><%= indentify.indentify_code %></td>
+        <td><%= indentify.tieude %></td>
+        <td><%= indentify.tacgia %></td>
+        <td><%= indentify.namxuatbang %></td>
+
+        <td><%= link_to 'Thông tin', indentify %></td>
+        <td><%= link_to 'Sửa', edit_indentify_path(indentify) %></td>
+        <td><%= link_to 'Xóa', indentify, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+      </tr>
+      <% end %>
+  </tbody>
+</table>
+<%= will_paginate %>
+<br>
+
+<%= link_to 'New Indentify', new_indentify_path %>
+</div>

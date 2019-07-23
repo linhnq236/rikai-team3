@@ -10,6 +10,89 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+ActiveRecord::Schema.define(version: 2019_07_18_083951) do
+
+
+  create_table "books", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tieude"
+    t.string "tacgia"
+    t.date "namxuatbang"
+    t.string "mota"
+    t.float "gia"
+    t.integer "catogary_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "mode", limit: 1
+    t.string "picture"
+  end
+
+  create_table "borrow_details", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "borrow_id"
+    t.datetime "thoigianmuon"
+    t.datetime "thoigiantra"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "mode", limit: 1
+  end
+
+  create_table "borrows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "soluongmuon"
+    t.integer "indentify_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "book_id"
+    t.integer "mode", limit: 1, default: 0
+    t.integer "mode1", limit: 1, default: 0
+  end
+
+  create_table "catogaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "tenloai"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "feedbacks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "email"
+    t.string "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "histories", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "indentify_id"
+    t.integer "book_id"
+    t.integer "mode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "indentifies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "indentify_code"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "catogary_id"
+  end
+
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "hoten"
+    t.string "email"
+    t.string "matkhau"
+    t.string "lop"
+    t.string "masv"
+    t.string "sdt"
+    t.string "thuongtru"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "namsinh_at"
+    t.boolean "admin", default: false
+    t.string "password_digest"
+    t.string "remember_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["masv"], name: "index_users_on_masv", unique: true
 ActiveRecord::Schema.define(version: 2019_06_25_060757) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

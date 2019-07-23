@@ -12,6 +12,11 @@
 default: &default
   adapter: mysql2
   encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: quang
+  password: minminmin
+  database: QLTV
+  socket: /var/run/mysqld/mysqld.sock
   pool: 5
   username: root
   password:
@@ -51,5 +56,7 @@ test:
 production:
   <<: *default
   database: QLTV
+  username: QLTV
+  password: <%= ENV['QLTV1_DATABASE_PASSWORD'] %>
   username: root
   password: 
